@@ -76,7 +76,7 @@ postcss.vendor = {
 }
 
 // RegExps for all Style Sheet variants
-export const regexLikeCss = /\.(css|scss|sass)(\.webpack\[javascript\/auto\])?$/
+export const regexLikeCss = /\.(css|scss|sass)$/
 
 // RegExps for Style Sheets
 const regexCssGlobal = /(?<!\.module)\.css$/
@@ -355,12 +355,7 @@ export const css = curry(async function css(
             // This should only be applied to CSS files
             issuer: regexLikeCss,
             // Exclude extensions that webpack handles by default
-            exclude: [
-              /\.(js|mjs|jsx|ts|tsx)$/,
-              /\.html$/,
-              /\.json$/,
-              /\.webpack\[[^\]]+\]$/,
-            ],
+            exclude: [/\.(js|mjs|jsx|ts|tsx)$/, /\.html$/, /\.json$/],
             use: {
               // `file-loader` always emits a URL reference, where `url-loader`
               // might inline the asset as a data URI
